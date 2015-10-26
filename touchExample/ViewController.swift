@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func closePresentedShortCutViewController(segue: UIStoryboardSegue)   {
-        print("dismissed presented short cut view controller..")
+        
     }
 
     @IBAction func doLoginOut(sender: UIButton) {
@@ -35,6 +35,13 @@ class ViewController: UIViewController {
         }
         
         delegate.arrangeDynamicShortCutItem(sender.selected)
+    }
+
+    @IBAction func doManualModal(sender: AnyObject) {
+        
+        guard let modalViewCntrlr = self.storyboard?.instantiateViewControllerWithIdentifier("PRESENT_NAVIGATION_SCREEN") as? UINavigationController else { return }
+        
+        self.presentViewController(modalViewCntrlr, animated: true, completion: nil)
     }
 }
 
