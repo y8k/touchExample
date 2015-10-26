@@ -8,9 +8,10 @@
 
 import UIKit
 
-class DetailWebViewController: UIViewController {
+class DetailWebViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +43,25 @@ class DetailWebViewController: UIViewController {
     }
     */
 
+    func webViewDidStartLoad(webView: UIWebView) {
+        self.loadingActivityIndicatorView.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.loadingActivityIndicatorView.stopAnimating()
+    }
+    
+    
     override func previewActionItems() -> [UIPreviewActionItem] {
         
-        let safariAction = UIPreviewAction(title: "Open Safari", style: UIPreviewActionStyle.Default) { (action, viewCntrlr) -> Void in
+        let safariAction = UIPreviewAction(title: "Open with Safari", style: UIPreviewActionStyle.Default) { (action, viewCntrlr) -> Void in
             UIApplication.sharedApplication().openURL(NSURL(string: "http://y8k.me")!)
         }
         
-        return [safariAction]
+        let closeAction = UIPreviewAction(title: "Copy URL", style: .Default) { (action, viewCntrlr) -> Void in
+            UIPasteboard.generalPasteboard().string = "http://y8k.me"
+        }
+        
+        return [safariAction, closeAction]
     }
 }

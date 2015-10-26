@@ -50,6 +50,7 @@ class PresentedViewController: UITableViewController, UIViewControllerPreviewing
         super.viewDidLoad()
 
         registerForPreviewingWithDelegate(self, sourceView: view)
+        
     }
     
     func handleShortCutItem(type: String) -> Void   {
@@ -110,6 +111,10 @@ class PresentedViewController: UITableViewController, UIViewControllerPreviewing
             self.performSegueWithIdentifier("SHOW_CONTENT_SCREEN", sender: nil)
             break
         }
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60.0
     }
     
     // MARK: UIViewControllerPreviewing delegate

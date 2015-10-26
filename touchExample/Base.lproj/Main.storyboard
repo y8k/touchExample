@@ -34,11 +34,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PEEK_POP_TABLEVIEW_CELL" selectionStyle="default" indentationWidth="10" reuseIdentifier="PEEK_POP_TABLEVIEW_CELL" id="XY5-4Y-hhT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PEEK_POP_TABLEVIEW_CELL" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PEEK_POP_TABLEVIEW_CELL" id="XY5-4Y-hhT">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XY5-4Y-hhT" id="J5k-qG-sRf">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -85,11 +85,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="3Xc-EG-KP5" id="6g0-gk-zBz"/>
+                                </connections>
                             </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="u0J-th-r3E">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <animations/>
+                                <color key="color" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="u0J-th-r3E" firstAttribute="centerX" secondItem="kwc-tz-H9e" secondAttribute="centerX" id="0AW-fT-fOF"/>
                             <constraint firstItem="bBm-cm-CUF" firstAttribute="top" secondItem="XHV-DD-F1V" secondAttribute="bottom" id="8Vr-eR-7cU"/>
                             <constraint firstItem="bBm-cm-CUF" firstAttribute="top" secondItem="XHV-DD-F1V" secondAttribute="bottom" id="A1s-N2-3mP"/>
                             <constraint firstAttribute="trailing" secondItem="XHV-DD-F1V" secondAttribute="trailing" id="BsW-fv-Nuv"/>
@@ -98,6 +107,7 @@
                             <constraint firstItem="XHV-DD-F1V" firstAttribute="centerX" secondItem="kwc-tz-H9e" secondAttribute="centerX" id="PI6-Dm-Vlr"/>
                             <constraint firstItem="XHV-DD-F1V" firstAttribute="top" secondItem="kwc-tz-H9e" secondAttribute="top" id="YL1-yk-lhr"/>
                             <constraint firstAttribute="leadingMargin" secondItem="XHV-DD-F1V" secondAttribute="leading" id="Z85-2d-goj"/>
+                            <constraint firstItem="u0J-th-r3E" firstAttribute="centerY" secondItem="kwc-tz-H9e" secondAttribute="centerY" id="epd-Bn-Lil"/>
                             <constraint firstItem="bBm-cm-CUF" firstAttribute="top" secondItem="XHV-DD-F1V" secondAttribute="bottom" id="f8k-hh-FNe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XHV-DD-F1V" secondAttribute="trailing" id="kR5-GU-2bs"/>
                             <constraint firstItem="XHV-DD-F1V" firstAttribute="top" secondItem="7KR-Qu-Hfm" secondAttribute="bottom" id="sUJ-Vb-tDZ"/>
@@ -117,6 +127,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="loadingActivityIndicatorView" destination="u0J-th-r3E" id="GdO-bL-RhN"/>
                         <outlet property="webView" destination="XHV-DD-F1V" id="DTn-Rl-l9R"/>
                     </connections>
                 </viewController>
@@ -141,7 +152,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -169,12 +180,22 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fSs-QQ-ofH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DETAIL_LIST_CELL" textLabel="IHt-Tg-ie3" style="IBUITableViewCellStyleDefault" id="fSs-QQ-ofH">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fSs-QQ-ofH" id="nru-Zz-E4E">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IHt-Tg-ie3">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
